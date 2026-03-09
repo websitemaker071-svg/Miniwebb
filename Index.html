@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mini Website</title>
+
+<style>
+body{
+font-family:sans-serif;
+text-align:center;
+background:#111;
+color:white;
+}
+
+.page{
+display:none;
+padding:40px;
+}
+
+#page1{
+display:block;
+}
+
+button{
+padding:15px 25px;
+font-size:18px;
+background:red;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin:10px;
+}
+
+img{
+width:300px;
+margin-top:20px;
+}
+
+video{
+width:350px;
+margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page">
+
+<h1>Welcome</h1>
+
+<button onclick="startMusic()">Start Music</button>
+
+<br>
+
+<button onclick="nextPage()">Go To Second Page</button>
+
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+
+<h1>Gallery</h1>
+
+<img src="photo.jpg">
+
+<br>
+
+<video id="video" controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<script>
+
+let music = document.getElementById("music");
+let video = document.getElementById("video");
+
+function startMusic(){
+music.play();
+}
+
+function nextPage(){
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="block";
+}
+
+video.onplay = function(){
+music.muted = true;
+}
+
+video.onpause = function(){
+music.muted = false;
+}
+
+video.onended = function(){
+music.muted = false;
+}
+
+</script>
+
+</body>
+</html>
